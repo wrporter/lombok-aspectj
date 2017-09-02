@@ -9,7 +9,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class MyTest {
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void meh() {
         MyObject o = new MyObject();
         o.setId("meh");
