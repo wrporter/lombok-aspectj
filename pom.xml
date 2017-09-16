@@ -36,6 +36,7 @@
 
     <build>
         <sourceDirectory>${project.build.directory}/generated-sources/delombok</sourceDirectory>
+        <testSourceDirectory>${project.build.directory}/generated-test-sources/delombok</testSourceDirectory>
 
         <plugins>
             <plugin>
@@ -55,16 +56,28 @@
                 <version>1.16.16.0</version>
                 <executions>
                     <execution>
+                        <id>delombok-main</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>delombok</goal>
                         </goals>
+                        <configuration>
+                            <addOutputDirectory>false</addOutputDirectory>
+                            <sourceDirectory>src/main/java</sourceDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>delombok-test</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>testDelombok</goal>
+                        </goals>
+                        <configuration>
+                            <addOutputDirectory>false</addOutputDirectory>
+                            <sourceDirectory>src/test/java</sourceDirectory>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <addOutputDirectory>false</addOutputDirectory>
-                    <sourceDirectory>src/main/java</sourceDirectory>
-                </configuration>
             </plugin>
 
             <plugin>
